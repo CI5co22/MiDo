@@ -90,3 +90,23 @@
 {
     color: var(--opaco)
 }
+
+.sinRecetas
+{
+    display: grid;
+    place-items: center; /* centra vertical y horizontal */
+    margin-top: 6rem;
+}
+
+.sinRecetas a
+{
+    color: rgb(64, 163, 160);
+    font-weight: 900;
+}
+
+.sinRecetas i
+{
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    color: var(--opaco)
+}

@@ -28,17 +28,30 @@
         </div>
         <div class="list">
             <div>
-                <p><b>Mi receta actual:</b></p>
+                <p><b>En curso:</b></p>
             </div>
             {% if activos %}
             {% for receta in activos %}
            <div class="receta mt-3" data-id="{{ receta.id }}">
                 <div class="receta-info1">
-                    <div class="receta-doc">Doc. {{ receta.doc|title }}</div>
+                    <div class="receta-doc">
+                         {%  if  receta.doc|default_if_none:"" %}
+                         Doc. {{ receta.doc|title }}
+                        {% else %}
+                        Doctor no asignado
+                        {% endif %}
+                    </div>
                     <div class="receta-cantidadMedicina">
                         <i class="fa-solid fa-capsules"></i>
                         {{receta.cantidad_medicinas}} medicinas
+                        <i class="fa-solid fa-location-dot ms-3"></i>
+                        {%  if  receta.lugar|default_if_none:"" %}
+                        {{ receta.lugar|title }}
+                        {% else %}
+                        Lugar no asignado
+                        {% endif %}
                     </div>
+                    
                 </div>
                 <div class="receta-info2">
                     <div class="detalles">
@@ -64,14 +77,28 @@
             <!--  -->
             <hr class="mt-4 mb-3">
             <!--  -->
+            {% if lista %}
             {% for receta in lista %}
             <div class="receta mt-3" data-id="{{ receta.id }}">
                 <div class="receta-info1">
-                    <div class="receta-doc">Doc. {{ receta.doc|title }}</div>
+                    <div class="receta-doc">
+                         {%  if  receta.doc|default_if_none:"" %}
+                         Doc. {{ receta.doc|title }}
+                        {% else %}
+                        Doctor no asignado
+                        {% endif %}
+                    </div>
                     <div class="receta-cantidadMedicina">
                         <i class="fa-solid fa-capsules"></i>
                         {{receta.cantidad_medicinas}} medicinas
+                        <i class="fa-solid fa-location-dot ms-3"></i>
+                        {%  if  receta.lugar|default_if_none:"" %}
+                        {{ receta.lugar|title }}
+                        {% else %}
+                        Lugar no asignado
+                        {% endif %}
                     </div>
+                    
                 </div>
                 <div class="receta-info2">
                     <div class="detalles">
@@ -91,6 +118,9 @@
                 </div>
             </div>
             {% endfor %}
+            {% else%}
+             {%  include 'sinRecetas.html' %}
+            {% endif %}
         </div>
     </div>
 

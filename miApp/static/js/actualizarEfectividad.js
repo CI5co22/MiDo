@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.dataset.mode = "edit";
 
         } else {
-            // --- Confirmar y guardar en DB ---
             const nuevoValor = document.getElementById("efectividad-input").value || 0;
             const recetaId = valor.dataset.efectid;
 

@@ -179,3 +179,23 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 
+
+.sinMedicina
+{
+    display: grid;
+    place-items: center; /* centra vertical y horizontal */
+    margin-top: 6rem;
+}
+
+.sinMedicina a
+{
+    color: rgb(64, 163, 160);
+    font-weight: 900;
+}
+
+.sinMedicina i
+{
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    color: var(--opaco)
+}

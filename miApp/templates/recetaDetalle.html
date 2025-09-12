@@ -20,8 +20,22 @@
         </div>
         <div class="top d-flex">
             <div class="informacion">
-                <p class="doc">Doc. {{ receta.doc|title }}</p>
-                <p class="fecha">Fecha: {{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
+                <p class="doc">
+                    {%  if  receta.doc|default_if_none:"" %}
+                         Doc. {{ receta.doc|title }}
+                        {% else %}
+                        Doctor no asignado
+                        {% endif %}
+                </p>
+                <p class="fecha mb-0">Fecha: {{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
+                <p>
+                    Lugar:
+                        {%  if  receta.lugar|default_if_none:"" %}
+                        {{ receta.lugar|title }}
+                        {% else %}
+                        Lugar no asignado
+                        {% endif %}
+                </p>
                 <div class="form-check form-switch d-flex p-0">
                     <p class="p-0 m-0"><b>Activo:</b></p>
                     <input 
@@ -52,6 +66,7 @@
                 <button class="scl" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa-solid fa-plus me-1 "  ></i> Agregar medicamento</button>
             </div>
             <div class="info-contenido ">
+                {% if medicinas %}
                 {% for med in medicinas %}
                 <div class="medicina">
                     <div class="mediciona-info">
@@ -70,6 +85,9 @@
                     </div>
                 </div>
                 {% endfor %}
+                 {% else%}
+                    {%  include 'sinMedicinas.html' %}
+                {% endif %}
                
             </div>
         </div>
