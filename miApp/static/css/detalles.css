@@ -189,7 +189,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
 .sinMedicina a
 {
-    color: rgb(64, 163, 160);
+    color: var(--text);
     font-weight: 900;
 }
 
@@ -198,4 +198,13 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     font-size: 5rem;
     margin-bottom: 2rem;
     color: var(--opaco)
+}
+
+.editRecetaInfo
+{
+    background-color: var(--botones) !important;
+    color: white !important;
+    font-weight: 600;
+    padding: 0.2rem 1rem;
+    margin: 0.8rem 0 1rem; 
 }

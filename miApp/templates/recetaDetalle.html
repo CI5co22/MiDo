@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
     <link rel="stylesheet" href="{% static 'css/modalAgregarMedicamento.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modalAgregar.css' %}">
 
     <title>Detalles</title>
 </head>
@@ -28,7 +29,7 @@
                         {% endif %}
                 </p>
                 <p class="fecha mb-0">Fecha: {{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
-                <p>
+                <p class="mb-0">
                     Lugar:
                         {%  if  receta.lugar|default_if_none:"" %}
                         {{ receta.lugar|title }}
@@ -36,8 +37,18 @@
                         Lugar no asignado
                         {% endif %}
                 </p>
+                <button class="btn scl editRecetaInfo"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#editarRecetaModal"
+                    
+                    data-id="{{receta.id}}"
+                    data-doc="{{receta.doc}}"
+                    data-lugar="{{receta.lugar}}"
+                    data-fecha="{{receta.fecha|stringformat:'s'}}"
+                    >
+                    <i class="fa-solid fa-edit me-2"></i> Editar información</button>
                 <div class="form-check form-switch d-flex p-0">
-                    <p class="p-0 m-0"><b>Activo:</b></p>
+                    <p class="p-0 m-0"><b>Seguir receta:</b></p>
                     <input 
                     class="form-check-input ms-3 switch-lg" 
                     data-id="{{ receta.id}}" 
@@ -79,7 +90,15 @@
                     </div>
                     <div class="mediciona-acciones">
                         <button class="scl ver btn"><i class="fa-solid fa-eye"></i></button>
-                        <button class="scl edit btn"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="scl edit btn" 
+                        data-receta_id="{{receta.id}}"
+                        data-id="{{ med.id }}" 
+                        data-title="{{med.nombre|capfirst}}" 
+                        data-cantidad="{{med.cantidad}}"
+                        data-cada="{{med.cada}}"
+                        data-durante="{{med.durante}}"
+                        data-bs-toggle="modal" data-bs-target="#editModal"
+                        ><i class="fa-solid fa-pencil"></i></button>
                         <button class="scl borrar btn" onclick="document.getElementById('deleteReceta').submit()"><i class="fa-solid fa-trash"></i></button>
                         <form action="./" method="POST" id="deleteReceta"> {% csrf_token %}<input type="hidden" name="deleteID" value="{{ med.id }}" ></form>
                     </div>
@@ -94,6 +113,8 @@
     </div>
 
 {% include 'modales/agregarMedicina.html' %}
+{% include 'modales/editarMedicina.html' %}
+{% include 'modales/editarReceta.html' %}
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -102,6 +123,8 @@
 <script src="{% static 'js/agregarMedicina.js' %}"></script>
 <script src="{% static 'js/actualizarEfectividad.js' %}"></script>
 <script src="{% static 'js/actualizarActivo.js' %}"></script>
+<script src="{% static 'js/editMedicina.js' %}"></script>
+<script src="{% static 'js/editReceta.js' %}"></script>
 
 
 </body>

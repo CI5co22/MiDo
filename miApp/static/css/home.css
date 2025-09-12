@@ -68,18 +68,19 @@
     right: 1.5rem;
 }
 
-.receta .accion button
+.receta .accion .eliminar
 {
     border: 1px solid var(--borde);
     font-size: 20px;
 }
 
-.receta .accion button:hover
+.receta .accion .eliminar:hover
 {
     border: 1px solid var(--delete);
     color: var(--delete);
-
 }
+
+
 
 .receta .receta-info2 .detalles
 {
@@ -100,7 +101,7 @@
 
 .sinRecetas a
 {
-    color: rgb(64, 163, 160);
+    color: var(--text);
     font-weight: 900;
 }
 

@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<div class="modal fade mt-5 " id="editarRecetaModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content custom-modal">
+      <div class="custom-modal-header mt-2 me-2">
+        <span class="ms-0" id="exampleModalLabel" ><b>Editar receta médica</b></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="../editarReceta/" method="POST" id="nuevaReceta">
+           {% csrf_token %}
+          <div class="mb-3 ">
+            <label for="recipient-name" class="col-form-label ">
+                <i class="fa-regular fa-user"></i>
+                Nombre del Doctor
+            </label>
+            <input type="text" name="doc" class="form-control" id="doc" placeholder="Ej. Juan Perez">
+          </div>
+          <div class="mb-3 ">
+            <label for="recipient-name" class="col-form-label ">
+                <i class="fa-solid fa-location-dot"></i>
+                Lugar
+            </label>
+            <input type="text" name="lugar" class="form-control" id="lugar" placeholder="Ej. Hospital Nasir">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"><i class="fa-regular fa-calendar"></i> Fecha</label>
+            <input class="form-control" type="date" name="fecha" id="fecha" required="required">
+          </div>
+        <input type="hidden" id="recetaID" name="recetaID">
+      </div>
+      <div class="custom-modal-footer">
+        <button type="submit" class="btn scl" >Actualizar información</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

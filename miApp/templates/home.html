@@ -106,14 +106,14 @@
                         <p class="efectividad"><b>Efectividad:</b> {{ receta.efectividad }}/10</p>
                     </div>
                     <div class="accion">
-                        <button class="btn scl" onclick="event.stopPropagation(); document.getElementById('eliminarReceta').submit()"><i class="fa-solid fa-trash"></i></button>
+                        <button class="btn eliminar scl" onclick="event.stopPropagation(); document.getElementById('eliminarReceta').submit()"><i class="fa-solid fa-trash"></i></button>
                         <form 
                         id="eliminarReceta"
                         action="eliminarReceta/" 
                         method="POST">
                             {% csrf_token %} 
                             <input type="hidden" name="deleteID" value="{{ receta.id }}">
-                    </form>
+                        </form>
                     </div>
                 </div>
             </div>

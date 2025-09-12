@@ -5,6 +5,7 @@ from .models import Receta, Medicamento
 import json
 
 
+
 # Create your views here.
 def index(request):
     
@@ -76,6 +77,31 @@ def AgregarMedicina(request):
     return JsonResponse({
         'status' : 'ok'
     })
+    
+def editarMedicina(request):
+    recetaID = request.POST.get('recetaID')
+    editID = int(request.POST.get('edit-id'))
+    medicina = Medicamento.objects.get(id = editID)
+    
+    medicina.nombre = request.POST.get('nombre')
+    medicina.cantidad = request.POST.get('cantidad')
+    medicina.cada = request.POST.get('cada')
+    medicina.durante = request.POST.get('durante')
+    medicina.save()
+    
+    return redirect("receta-detalle", id = recetaID)
+
+def editarReceta(request):
+    recetaID = request.POST.get('recetaID')
+    receta = Receta.objects.get(id = recetaID)
+    
+    receta.doc = request.POST.get('doc')
+    receta.lugar = request.POST.get('lugar')
+    receta.fecha = request.POST.get('fecha')
+    receta.save()
+    
+    return redirect("receta-detalle", id = recetaID)
+
     
 def actualizar_efectividad(request, id):
     if request.method == "POST":

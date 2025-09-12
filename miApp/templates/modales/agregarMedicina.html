@@ -9,7 +9,7 @@
       </div>
 
       <div class="modal-body">
-        <form id="agregarMedicina" data-id="{{ receta.id }}">
+        <form id="agregarMedicina" data-id="{{ receta.id }}" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="mb-3">
             <label for="med-name" class="form-label fw-semibold">Nombre del medicamento</label>
@@ -33,7 +33,7 @@
 
           <div class="mb-3">
             <label class="form-label fw-semibold">Foto del medicamento (opcional)</label>
-           <input type="file" name="" class="form-control" id="">
+           <input type="file" name="img" class="form-control" id="">
           </div>
       
       </div>

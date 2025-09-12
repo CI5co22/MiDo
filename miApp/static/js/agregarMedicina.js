@@ -1,27 +1,24 @@
 $(document).on("submit", "#agregarMedicina", function (e) {
-    // e.preventDefault(); 
+    e.preventDefault(); // 👈 ahora sí, para que no recargue el form
+    
     let $form = $(this);
     let recetaId = $form.data("id");
 
-    let nombre = $("#med-name").val();
-    let cantidad = $("#med-cantidad").val();
-    let cada = $("#med-cada").val();
-    let durante = $("#med-durante").val();
+    // creamos el FormData con todos los campos del formulario
+    let formData = new FormData($form[0]);
+    formData.append("recetaId", recetaId);
 
     $.ajax({
-        url: `/receta/agregar/`, 
+        url: `/receta/agregar/`,
         type: "POST",
-        data: {
-            'nombre': nombre,
-            'cantidad': cantidad,
-            'cada': cada,
-            'durante': durante,
-            'recetaId': recetaId,
-            'csrfmiddlewaretoken': $form.find("input[name=csrfmiddlewaretoken]").val()
-        },
+        data: formData,
+        processData: false,   // 👈 obligatorio con FormData
+        contentType: false,   // 👈 obligatorio con FormData
         success: function(resp) {
             if (resp.status === "ok") {
-               console.log('Se pudo');
+                console.log("Se pudo");
+                // aquí podrías cerrar el modal y refrescar tu tabla sin recargar toda la página
+                $("#exampleModal").modal("hide");
             } else {
                 alert("Error al agregar la medicina");
             }
