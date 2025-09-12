@@ -28,9 +28,8 @@
                         Doctor no asignado
                         {% endif %}
                 </p>
-                <p class="fecha mb-0">Fecha: {{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
+                <p class="fecha mb-0">{{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
                 <p class="mb-0">
-                    Lugar:
                         {%  if  receta.lugar|default_if_none:"" %}
                         {{ receta.lugar|title }}
                         {% else %}
@@ -74,7 +73,7 @@
         <div class="info">
             <div class="info-top mb-3">
                 <h5 class="mt-1">Medicamentos ({{receta.cantidad_medicinas}})</h5>
-                <button class="scl" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa-solid fa-plus me-1 "  ></i> Agregar medicamento</button>
+                <button class="scl aggbtn " data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa-solid fa-plus me-1 "  ></i><span class="agg"> Agregar medicamento</span></button>
             </div>
             <div class="info-contenido ">
                 {% if medicinas %}
@@ -83,9 +82,9 @@
                     <div class="mediciona-info">
                         <p class="medicina-title">{{ med.nombre|upper}}</p>
                         <div class="periodos">
-                             <p class="cada me-2"><i class="fa-solid fa-capsules"></i>{{ med.cantidad}}</p>
-                            <p class="cada me-4"><i class="fa-regular fa-clock"></i> Cada {{ med.cada }}</p>
-                            <p class="durante"><i class="fa-regular fa-calendar"></i> Durante {{ med.durante}}</p>
+                             <p class="cada me-2"><i class="fa-solid fa-capsules"></i> {{ med.cantidad}}</p>
+                            <p class="cada me-4"><i class="fa-regular fa-clock"></i> Cada: {{ med.cada }}</p>
+                            <p class="durante"><i class="fa-regular fa-calendar"></i> Durante:   {{ med.durante}}</p>
                         </div>
                     </div>
                     <div class="mediciona-acciones">

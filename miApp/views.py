@@ -64,14 +64,15 @@ def RecetaDetalle(request, id):
     
     if request.method == 'POST':
         deleteId = request.POST.get('deleteID')
-        medicina = Medicamento.objects.get(id = deleteId)
-        
-        if medicina.img:
-            img_path = medicina.img.path  # ruta absoluta
-            if os.path.isfile(img_path):  # existe en el disco
-                os.remove(img_path) 
-        
-        medicina.delete()
+        if deleteId:
+            medicina = Medicamento.objects.filter(id=deleteId).first()
+            if medicina:  # Solo borramos si existe
+                if medicina.img:
+                    img_path = medicina.img.path
+                    if os.path.isfile(img_path):
+                        os.remove(img_path)
+                medicina.delete()
+
     
     receta = Receta.objects.get(id=id)
     medicinas = Medicamento.objects.filter(receta_id=id).order_by('-id')
