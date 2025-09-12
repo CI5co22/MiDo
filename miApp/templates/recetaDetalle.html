@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/detalles.css' %}">
+
+    <title>Detalles</title>
+</head>
+<body>
+    <div class="container container-fluid w-50">
+        <div class="back">
+        <i class="fa-solid fa-arrow-left fs-3 mt-2"></i>
+        </div>
+        <div class="top  mt-5">
+            <div class="info">
+                <p class="doc">Doc XXXX</p>
+                <p class="fecha">Fecha: 11 de agosto del 2025</p>
+            </div>
+            <div class="efectividad">
+                <p class="title"><b>Efectividad</b></p>
+                <div class="efectividad-child d-flex">
+                    <p class="valor me-3 mb-0">7/10</p>
+                    <button class="btn scl">
+                        <i class="fa-solid fa-edit"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="info-top">
+                <h5>Medicamentos (2)</h5>
+                <button><i class="fa-solid fa-plus"></i> Agregar medicamento</button>
+            </div>
+            <div class="info-contenido">
+                <div class="medicina">
+                    <div class="mediciona-info">
+                        <p>Paracetamol</p>
+                        <div class="periodos">
+                            <p class="cada"><i class="fa-regular fa-clock"> Cada 8 horas</i></p>
+                            <p class="durante"><i class="fa-regular fa-calendar"> Durante 10 dias</i></p>
+                        </div>
+                    </div>
+                    <div class="mediciona-acciones">
+                        <button><i class="fa-regular fa-eye"></i></button>
+                        <button><i class="fa-solid fa-pencil"></i></button>
+                        <button><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

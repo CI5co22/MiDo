@@ -1,0 +1,31 @@
+{% load static %}
+
+
+<div class="modal fade mt-5 " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content custom-modal">
+      <div class="custom-modal-header mt-2 me-2">
+        <span class="ms-0" id="exampleModalLabel" ><b>Nueva receta médica</b></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3 ">
+            <label for="recipient-name" class="col-form-label ">
+                <i class="fa-regular fa-user"></i>
+                Nombre del Doctor
+            </label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="Ej. Juan Perez">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Fecha</label>
+            <input class="form-control" type="date" name="" id="">
+          </div>
+        </form>
+      </div>
+      <div class="custom-modal-footer ">
+        <button type="button" class="btn scl">Guardar Receta</button>
+      </div>
+    </div>
+  </div>
+</div>
