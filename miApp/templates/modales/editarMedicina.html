@@ -1,0 +1,46 @@
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-4 shadow">
+      
+    
+      <div class="p-3 d-flex justify-content-between align-items-center">
+        <h5 class="title fw-bold" id="exampleModalLabel">Editar medicina</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="med-name" class="form-label fw-semibold">Nombre del medicamento</label>
+            <input type="text" class="form-control" id="med-name" value="Paracetamol">
+          </div>
+          
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label class="form-label fw-semibold">Tomar</label>
+              <input type="number" class="form-control" value="2" min="1">
+            </div>
+            <div class="col">
+              <label class="form-label fw-semibold">Cada</label>
+              <input type="text" class="form-control" value="6 horas">
+            </div>
+            <div class="col">
+              <label class="form-label fw-semibold">Durante</label>
+              <input type="text" class="form-control" value="10 días">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Foto del medicamento (opcional)</label>
+           <input type="file" name="" class="form-control" id="">
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer sin borde -->
+      <div class="p-3 footer">
+        <button type="button" class="btn scl">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
