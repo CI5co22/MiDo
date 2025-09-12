@@ -41,11 +41,18 @@
     font-size: 18px;
 }
 
+.switch-lg {
+  transform: scale(1.5); /* agranda 50% */
+  margin-left: 0.5rem;   /* corrige la alineación */
+}
+
 .efectividad
 {
     position: absolute;
-    right: 0; 
+    right: 1rem; 
 }
+
+
 
 .efectividad-child
 {
@@ -82,7 +89,14 @@
     border: 1px solid var(--borde) ;
     border-radius: 30px;
     min-height: 550px;
+    transition: .3s ease-in-out;
     
+}
+
+
+.info:hover
+{
+box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .info .info-top
@@ -163,4 +177,5 @@
 {
     color:var(--delete) !important;
 }
+
 

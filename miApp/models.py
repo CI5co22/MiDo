@@ -8,6 +8,7 @@ class Receta(models.Model):
     fecha = models.DateField()
     efectividad = models.IntegerField(default=0) 
     activo = models.BooleanField(default=False)
+    lugar = models.CharField(null=True)
     
     def __str__(self):
         return f"Receta {self.id} - {self.doc}"

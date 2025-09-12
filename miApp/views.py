@@ -12,12 +12,15 @@ def index(request):
         Receta.objects.create(
             doc = request.POST.get('doc'),
             fecha = request.POST.get('fecha'),
+            lugar = request.POST.get('lugar')
         )
         
+    activos =  Receta.objects.filter(activo=True)
+   
     
-    lista = Receta.objects.all().order_by('-id')
+    lista = Receta.objects.filter(activo=False).order_by('-id')
     
-    return render(request, "home.html",{'lista': lista})
+    return render(request, "home.html",{'lista': lista, 'activos': activos})
 
 
 def eliminarReceta(request):
@@ -31,6 +34,22 @@ def eliminarReceta(request):
 def AgregarReceta(request):
     return render(request, "agregarReceta.html")
 
+def ActivarReceta(request):
+    activarID = request.POST.get('id')
+    receta = Receta.objects.get(id = activarID)
+    
+    if receta.activo:
+        receta.activo = False
+    else:
+        receta.activo = True
+    
+    receta.save()
+    
+    return JsonResponse({
+        'status' : 'ok'
+    })
+    
+    
 
 def RecetaDetalle(request, id):
     
