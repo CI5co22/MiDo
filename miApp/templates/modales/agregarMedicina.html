@@ -13,21 +13,21 @@
           {% csrf_token %}
           <div class="mb-3">
             <label for="med-name" class="form-label fw-semibold">Nombre del medicamento</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej. Paracetamol">
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej. Paracetamol" required="required">
           </div>
           
           <div class="row g-2 mb-3">
             <div class="col">
               <label class="form-label fw-semibold">Tomar</label>
-              <input id="med-cantidad" name="cantidad" type="text" class="form-control" placeholder='Ej.10ml o "2"'>
+              <input id="med-cantidad" name="cantidad" type="text" class="form-control" placeholder='Ej.10ml o "2"' required="required">
             </div>
             <div class="col">
               <label class="form-label fw-semibold">Cada</label>
-              <input id="med-cada"type="text" name="cada" class="form-control" placeholder="Ej. 8 hrs" >
+              <input id="med-cada"type="text" name="cada" class="form-control" placeholder="Ej. 8 hrs" required="required">
             </div>
             <div class="col">
               <label class="form-label fw-semibold">Durante</label>
-              <input id="med-durante" type="text" name="durante" class="form-control" placeholder="Ej. 10 días">
+              <input id="med-durante" type="text" name="durante" class="form-control" placeholder="Ej. 10 días" required="required">
             </div>
           </div>
           <input type="hidden" value="{{receta.id}}" name="recetaId">

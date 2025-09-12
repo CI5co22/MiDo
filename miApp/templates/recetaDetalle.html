@@ -104,8 +104,8 @@
                         data-durante="{{med.durante}}"
                         data-bs-toggle="modal" data-bs-target="#editModal"
                         ><i class="fa-solid fa-pencil"></i></button>
-                        <button class="scl borrar btn" onclick="document.getElementById('deleteReceta').submit()"><i class="fa-solid fa-trash"></i></button>
-                        <form action="./" method="POST" id="deleteReceta"> {% csrf_token %}<input type="hidden" name="deleteID" value="{{ med.id }}" ></form>
+                        <button class="scl borrar btn" onclick="document.getElementById('deleteReceta-{{ med.id }}').submit()"><i class="fa-solid fa-trash"></i></button>
+                        <form action="./" method="POST" id="deleteReceta-{{ med.id }}"> {% csrf_token %}<input type="hidden" name="deleteID" value="{{ med.id }}" ></form>
                     </div>
                 </div>
                 {% endfor %}

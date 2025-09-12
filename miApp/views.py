@@ -85,7 +85,7 @@ def AgregarMedicina(request):
         cada = request.POST.get("cada"),
         durante = request.POST.get("durante"),
         receta_id = request.POST.get("recetaId"),
-        img = request.FILES.get("img")
+        img = request.FILES.get("img",'')
     )
     
     return JsonResponse({
