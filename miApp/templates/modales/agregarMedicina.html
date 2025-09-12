@@ -9,24 +9,25 @@
       </div>
 
       <div class="modal-body">
-        <form>
+        <form id="agregarMedicina" data-id="{{ receta.id }}">
+          {% csrf_token %}
           <div class="mb-3">
             <label for="med-name" class="form-label fw-semibold">Nombre del medicamento</label>
-            <input type="text" class="form-control" id="med-name" value="Paracetamol">
+            <input type="text" class="form-control" id="med-name" placeholder="Ej. Paracetamol">
           </div>
           
           <div class="row g-2 mb-3">
             <div class="col">
               <label class="form-label fw-semibold">Tomar</label>
-              <input type="number" class="form-control" value="2" min="1">
+              <input id="med-cantidad" type="text" class="form-control" placeholder='Ej.10ml o "2"'>
             </div>
             <div class="col">
               <label class="form-label fw-semibold">Cada</label>
-              <input type="text" class="form-control" value="6 horas">
+              <input id="med-cada"type="text" class="form-control" placeholder="Ej. 8 hrs" >
             </div>
             <div class="col">
               <label class="form-label fw-semibold">Durante</label>
-              <input type="text" class="form-control" value="10 días">
+              <input id="med-durante" type="text" class="form-control" placeholder="Ej. 10 días">
             </div>
           </div>
 
@@ -34,13 +35,14 @@
             <label class="form-label fw-semibold">Foto del medicamento (opcional)</label>
            <input type="file" name="" class="form-control" id="">
           </div>
-        </form>
+      
       </div>
 
       <!-- Footer sin borde -->
       <div class="p-3 footer">
-        <button type="button" class="btn scl">Agregar</button>
+        <button type="submit" class="btn scl">Agregar</button>
       </div>
+        </form>
     </div>
   </div>
 </div>

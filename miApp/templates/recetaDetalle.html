@@ -20,60 +20,61 @@
         </div>
         <div class="top">
             <div class="informacion">
-                <p class="doc">Doc. Juan Perez</p>
-                <p class="fecha">Fecha: 11 de agosto del 2025</p>
+                <p class="doc">Doc. {{ receta.doc|title }}</p>
+                <p class="fecha">Fecha: {{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
             </div>
-            <div class="efectividad">
-                <p class="title"><b>Efectividad</b></p>
-                <div class="efectividad-child d-flex">
-                    <p class="valor me-3 mb-0">7/10</p>
-                    <button class="btn scl">
-                        <i class="fa-solid fa-edit"></i>
-                    </button>
-                </div>
+            <div class="efectividad d-flex">
+            <p class="title"><b>Efectividad</b></p>
+            <div class="efectividad-child d-flex me-3">
+                <p class="valor me-3 mb-0" id="efectividad-valor"  data-efectid="{{ receta.id }}">{{ receta.efectividad }}/10</p>
+                <button class="btn scl" id="efectividad-btn">
+                    <i class="fa-solid fa-edit"></i>
+                </button>
             </div>
+            <p class="title"><b>Activo</b></p>
+            <div class="efectividad-child d-flex">
+                <input class="activo" type="checkbox" name="activo" id="activo">
+            </div>
+        </div>
+
         </div>
         <div class="info">
             <div class="info-top mb-3">
-                <h5 class="mt-1">Medicamentos (2)</h5>
+                <h5 class="mt-1">Medicamentos ({{receta.cantidad_medicinas}})</h5>
                 <button class="scl" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa-solid fa-plus me-1 "  ></i> Agregar medicamento</button>
             </div>
             <div class="info-contenido ">
+                {% for med in medicinas %}
                 <div class="medicina">
                     <div class="mediciona-info">
-                        <p class="medicina-title">Paracetamol</p>
+                        <p class="medicina-title">{{ med.nombre|upper}}</p>
                         <div class="periodos">
-                            <p class="cada me-4"><i class="fa-regular fa-clock"></i> Cada 8 horas</p>
-                            <p class="durante"><i class="fa-regular fa-calendar"></i> Durante 10 dias</p>
+                             <p class="cada me-2"><i class="fa-solid fa-capsules"></i>{{ med.cantidad}}</p>
+                            <p class="cada me-4"><i class="fa-regular fa-clock"></i> Cada {{ med.cada }}</p>
+                            <p class="durante"><i class="fa-regular fa-calendar"></i> Durante {{ med.durante}}</p>
                         </div>
                     </div>
                     <div class="mediciona-acciones">
                         <button class="scl ver btn"><i class="fa-solid fa-eye"></i></button>
                         <button class="scl edit btn"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="scl borrar btn"><i class="fa-solid fa-trash"></i></button>
+                        <button class="scl borrar btn" onclick="document.getElementById('deleteReceta').submit()"><i class="fa-solid fa-trash"></i></button>
+                        <form action="./" method="POST" id="deleteReceta"> {% csrf_token %}<input type="hidden" name="deleteID" value="{{ med.id }}" ></form>
                     </div>
                 </div>
-                <div class="medicina">
-                    <div class="mediciona-info">
-                        <p class="medicina-title">Paracetamol</p>
-                        <div class="periodos">
-                            <p class="cada me-4"><i class="fa-regular fa-clock"></i> Cada 8 horas</p>
-                            <p class="durante"><i class="fa-regular fa-calendar"></i> Durante 10 dias</p>
-                        </div>
-                    </div>
-                    <div class="mediciona-acciones">
-                        <button class="scl ver btn"><i class="fa-solid fa-eye"></i></button>
-                        <button class="scl edit btn"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="scl borrar btn"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                </div>
+                {% endfor %}
+               
             </div>
         </div>
     </div>
 
 {% include 'modales/agregarMedicina.html' %}
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="{% static 'js/agregarMedicina.js' %}"></script>
+<script src="{% static 'js/actualizarEfectividad.js' %}"></script>
 
 
 </body>

@@ -9,22 +9,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="./" method="POST" id="nuevaReceta">
+           {% csrf_token %}
           <div class="mb-3 ">
             <label for="recipient-name" class="col-form-label ">
                 <i class="fa-regular fa-user"></i>
                 Nombre del Doctor
             </label>
-            <input type="text" class="form-control" id="recipient-name" placeholder="Ej. Juan Perez">
+            <input type="text" name="doc" class="form-control" id="recipient-name" placeholder="Ej. Juan Perez">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Fecha</label>
-            <input class="form-control" type="date" name="" id="">
+            <input class="form-control" type="date" name="fecha" id="">
           </div>
         </form>
       </div>
-      <div class="custom-modal-footer ">
-        <button type="button" class="btn scl">Guardar Receta</button>
+      <div class="custom-modal-footer">
+        <button type="button" class="btn scl" onclick="document.getElementById('nuevaReceta').submit()">Guardar Receta</button>
       </div>
     </div>
   </div>

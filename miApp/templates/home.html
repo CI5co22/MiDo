@@ -49,27 +49,35 @@
                 </div>
             </div>
             <!--  -->
-            <hr class="my-4">
+            <hr class="mt-4 mb-3">
             <!--  -->
-            <div class="receta" data-id="1">
+            {% for receta in lista %}
+            <div class="receta mt-3" data-id="{{ receta.id }}">
                 <div class="receta-info1">
-                    <div class="receta-doc">Doc. TAL TAL</div>
+                    <div class="receta-doc">Doc. {{ receta.doc|title }}</div>
                     <div class="receta-cantidadMedicina">
                         <i class="fa-solid fa-capsules"></i>
-                        5 medicinas
+                        {{receta.cantidad_medicinas}} medicinas
                     </div>
                 </div>
                 <div class="receta-info2">
                     <div class="detalles">
-                        <p class="fecha m-0 mt-3">11 de agosto del 2025</p>
-                        <p class="efectividad"><b>Efectividad:</b> 1/10</p>
+                        <p class="fecha m-0 mt-3">{{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
+                        <p class="efectividad"><b>Efectividad:</b> {{ receta.efectividad }}/10</p>
                     </div>
                     <div class="accion">
-                        <button class="btn scl"><i class="fa-solid fa-trash"></i></button>
+                        <button class="btn scl" onclick="event.stopPropagation(); document.getElementById('eliminarReceta').submit()"><i class="fa-solid fa-trash"></i></button>
+                        <form 
+                        id="eliminarReceta"
+                        action="eliminarReceta/" 
+                        method="POST">
+                            {% csrf_token %} 
+                            <input type="hidden" name="deleteID" value="{{ receta.id }}">
+                    </form>
                     </div>
                 </div>
             </div>
-            
+            {% endfor %}
         </div>
     </div>
 
