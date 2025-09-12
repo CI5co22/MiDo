@@ -1,0 +1,308 @@
+/* Estilos base para móviles (hasta 767px) */
+.container {
+    width: 100% !important;
+    padding: 0 1rem;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.top h1 {
+    color: #374151;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 40px;
+}
+
+.top button {
+    position: absolute;
+    background-color: var(--botones) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    right: 0;
+    top: 5px;
+}
+
+.receta {
+    background-color: var(--card);
+    border: 1px solid var(--borde);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: .3s ease-in-out;
+    position: relative;
+}
+
+.receta:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+.receta-doc {
+    font-size: 18px;
+    text-transform: capitalize !important;
+    margin-bottom: 0.5rem;
+}
+
+.receta .receta-cantidadMedicina {
+    font-weight: 600;
+    color: #00000076;
+    margin-bottom: 1rem;
+}
+
+.receta .receta-cantidadMedicina i {
+    margin-right: 0.5rem;
+}
+
+.receta .receta-info2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--borde);
+    padding-top: 0.5rem;
+}
+
+.receta .receta-info2 .detalles {
+    margin-right: 0;
+}
+
+.receta .receta-info2 .detalles .fecha {
+    margin: 0;
+    font-size: 14px;
+}
+
+.receta .receta-info2 .detalles .efectividad {
+    color: var(--opaco);
+    font-size: 14px;
+    margin: 0.25rem 0 0 0;
+}
+
+.receta .accion .eliminar {
+    border: 1px solid var(--borde);
+    font-size: 16px;
+    padding: 0.3rem 0.6rem;
+}
+
+.receta .accion .eliminar:hover {
+    border: 1px solid var(--delete);
+    color: var(--delete);
+}
+
+.sinRecetas {
+    display: grid;
+    place-items: center;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.sinRecetas a {
+    color: var(--text);
+    font-weight: 900;
+}
+
+.sinRecetas i {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--opaco);
+}
+
+/* Tablet (768px a 899px) */
+@media (min-width: 768px) and (max-width: 899px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+    
+    .top {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .top h1 {
+        margin-bottom: 0;
+    }
+    
+    .top button {
+        position: static;
+        margin: 0.6rem 0;
+    }
+    
+    .receta {
+        padding: 1.5rem;
+    }
+    
+    .receta .receta-info2 {
+        border-top: none;
+        padding-top: 0;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+    
+    .receta .receta-info2 .detalles {
+        margin-right: 1rem;
+        text-align: right;
+    }
+}
+
+/* Diseño original pero ocupando todo el espacio (900px a 1000px) */
+@media (min-width: 758px) and (max-width: 1240px) {
+    .container {
+        width: 90% !important;
+        max-width: 90%;
+        margin: 3rem auto 0;
+    }
+    
+    .top {
+        margin-bottom: 3rem;
+        flex-direction: row;
+    }
+    
+    .top button {
+        position: absolute;
+        right: 0;
+        font-size: 18px;
+        margin: 0.6rem 0;
+    }
+    
+    .receta {
+        border-radius: 2rem;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .receta-doc {
+        font-size: 20px;
+        margin-bottom: 0.25rem;
+    }
+    
+    .receta .receta-cantidadMedicina {
+        margin-bottom: 0;
+    }
+    
+    .receta .receta-info2 {
+        position: absolute;
+        right: 1.5rem;
+        display: flex;
+        align-items: center;
+        border-top: none;
+        padding-top: 0;
+    }
+    
+    .receta .receta-info2 .detalles {
+        margin-right: 3rem;
+        text-align: right;
+    }
+    
+    .receta .receta-info2 .detalles .fecha {
+        font-size: inherit;
+        margin-top: 0.75rem;
+    }
+    
+    .receta .receta-info2 .detalles .efectividad {
+        font-size: inherit;
+        margin: 0;
+    }
+    
+    .receta .accion .eliminar {
+        font-size: 20px;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .sinRecetas {
+        margin-top: 6rem;
+    }
+    
+    .sinRecetas i {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Laptop (1001px y más) - Diseño original exacto */
+@media (min-width: 1241px) {
+    .container {
+        width: 50% !important;
+        margin: 3rem auto 0;
+    }
+    
+    .top {
+        margin-bottom: 3rem;
+        flex-direction: row;
+    }
+    
+    .top button {
+        position: absolute;
+        right: 0;
+        font-size: 18px;
+        margin: 0.6rem 0;
+    }
+    
+    .receta {
+        border-radius: 2rem;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .receta-doc {
+        font-size: 20px;
+        margin-bottom: 0.25rem;
+    }
+    
+    .receta .receta-cantidadMedicina {
+        margin-bottom: 0;
+    }
+    
+    .receta .receta-info2 {
+        position: absolute;
+        right: 1.5rem;
+        display: flex;
+        align-items: center;
+        border-top: none;
+        padding-top: 0;
+    }
+    
+    .receta .receta-info2 .detalles {
+        margin-right: 3rem;
+        text-align: right;
+    }
+    
+    .receta .receta-info2 .detalles .fecha {
+        font-size: inherit;
+        margin-top: 0.75rem;
+    }
+    
+    .receta .receta-info2 .detalles .efectividad {
+        font-size: inherit;
+        margin: 0;
+    }
+    
+    .receta .accion .eliminar {
+        font-size: 20px;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .sinRecetas {
+        margin-top: 6rem;
+    }
+    
+    .sinRecetas i {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+    }
+}

@@ -1,0 +1,18 @@
+:root
+{
+    --botones: #A0D3E8;
+    --card: #F5F7FA;
+    --borde: #C0C0C0;
+    --opaco: #00000076;
+    --delete: rgb(209, 94, 52);
+    --text: rgb(64, 163, 160);
+}
+
+.scl
+{
+    transition: 0.3s ease-out;
+}
+.scl:hover
+{
+    transform: scale(1.05);
+}

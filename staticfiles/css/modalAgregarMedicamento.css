@@ -1,0 +1,30 @@
+.modal
+{
+    margin-top:60px;
+}
+
+.modal-content
+{
+    padding: 0 1rem !important;
+}
+
+.title
+{
+    font-size: 30px !important;
+}
+
+.footer
+{
+    width: 100%;
+    margin-top: 0;
+    padding-top: 0 !important;
+    padding-bottom: 2rem !important;
+}
+.footer button
+{
+    width: 100%;
+     background-color: var(--text)!important;
+    color: white !important;
+    font-weight: 600;
+    
+}
