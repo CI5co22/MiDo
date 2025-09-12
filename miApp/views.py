@@ -28,7 +28,14 @@ def index(request):
 def eliminarReceta(request):
     deleteId = int(request.POST.get('deleteID'))
     receta = Receta.objects.get(id = deleteId)
-        
+    
+    medicinas = receta.medicamentos.all()  
+    for med in medicinas:
+        if med.img:
+            img_path = med.img.path
+            if os.path.isfile(img_path):
+                os.remove(img_path)
+    
     receta.delete() 
     
     return redirect("/")
