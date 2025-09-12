@@ -6,17 +6,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body text-center">
-        <img id="imgMedicamento" class="img-fluid" alt="Medicamento">
+        <img id="imgMedicamento" class="img-fluid" alt="Medicamento" style="display:none;">
+        <h4 id="noImageText" class="text-muted mt-4" style="display:none;">No se agregó ninguna imagen</h4>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-const modal = document.getElementById('modalMedicamento')
-modal.addEventListener('show.bs.modal', event => {
-    const button = event.relatedTarget
-    const imgUrl = button.getAttribute('data-img')
-    modal.querySelector('#imgMedicamento').src = imgUrl
-})
-</script>
