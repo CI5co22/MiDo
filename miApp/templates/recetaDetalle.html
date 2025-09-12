@@ -13,13 +13,13 @@
     <title>Detalles</title>
 </head>
 <body>
-    <div class="container container-fluid w-50">
+    <div class="container container-fluid w-50 ">
         <div class="back">
-        <i class="fa-solid fa-arrow-left fs-3 mt-2"></i>
+        <a href="../../"><i class="fa-solid fa-arrow-left fs-3 mt-3"></i></a>
         </div>
-        <div class="top  mt-5">
-            <div class="info">
-                <p class="doc">Doc XXXX</p>
+        <div class="top">
+            <div class="informacion">
+                <p class="doc">Doc. Juan Perez</p>
                 <p class="fecha">Fecha: 11 de agosto del 2025</p>
             </div>
             <div class="efectividad">
@@ -33,23 +33,37 @@
             </div>
         </div>
         <div class="info">
-            <div class="info-top">
-                <h5>Medicamentos (2)</h5>
-                <button><i class="fa-solid fa-plus"></i> Agregar medicamento</button>
+            <div class="info-top mb-3">
+                <h5 class="mt-1">Medicamentos (2)</h5>
+                <button class="scl"><i class="fa-solid fa-plus me-1 "></i> Agregar medicamento</button>
             </div>
-            <div class="info-contenido">
+            <div class="info-contenido ">
                 <div class="medicina">
                     <div class="mediciona-info">
-                        <p>Paracetamol</p>
+                        <p class="medicina-title">Paracetamol</p>
                         <div class="periodos">
-                            <p class="cada"><i class="fa-regular fa-clock"> Cada 8 horas</i></p>
-                            <p class="durante"><i class="fa-regular fa-calendar"> Durante 10 dias</i></p>
+                            <p class="cada me-4"><i class="fa-regular fa-clock"></i> Cada 8 horas</p>
+                            <p class="durante"><i class="fa-regular fa-calendar"></i> Durante 10 dias</p>
                         </div>
                     </div>
                     <div class="mediciona-acciones">
-                        <button><i class="fa-regular fa-eye"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="scl ver btn"><i class="fa-solid fa-eye"></i></button>
+                        <button class="scl edit btn"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="scl borrar btn"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="medicina">
+                    <div class="mediciona-info">
+                        <p class="medicina-title">Paracetamol</p>
+                        <div class="periodos">
+                            <p class="cada me-4"><i class="fa-regular fa-clock"></i> Cada 8 horas</p>
+                            <p class="durante"><i class="fa-regular fa-calendar"></i> Durante 10 dias</p>
+                        </div>
+                    </div>
+                    <div class="mediciona-acciones">
+                        <button class="scl ver btn"><i class="fa-solid fa-eye"></i></button>
+                        <button class="scl edit btn"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="scl borrar btn"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
             </div>
