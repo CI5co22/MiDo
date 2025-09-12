@@ -89,7 +89,12 @@
                         </div>
                     </div>
                     <div class="mediciona-acciones">
-                        <button class="scl ver btn"><i class="fa-solid fa-eye"></i></button>
+                        <button class="scl ver btn"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#modalMedicamento" 
+                            data-img="{% if med.img %}{{ med.img.url }}{% else %}/media/default.png{% endif %}"
+                        >                        
+                        <i class="fa-solid fa-eye"></i></button>
                         <button class="scl edit btn" 
                         data-receta_id="{{receta.id}}"
                         data-id="{{ med.id }}" 
@@ -115,6 +120,7 @@
 {% include 'modales/agregarMedicina.html' %}
 {% include 'modales/editarMedicina.html' %}
 {% include 'modales/editarReceta.html' %}
+{% include 'modales/imgReceta.html' %}
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -125,6 +131,7 @@
 <script src="{% static 'js/actualizarActivo.js' %}"></script>
 <script src="{% static 'js/editMedicina.js' %}"></script>
 <script src="{% static 'js/editReceta.js' %}"></script>
+<script src="{% static 'js/imgReceta.js' %}"></script>
 
 
 </body>

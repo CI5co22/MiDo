@@ -1,0 +1,22 @@
+<div class="modal fade" id="modalMedicamento" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Imagen del medicamento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="imgMedicamento" class="img-fluid" alt="Medicamento">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById('modalMedicamento')
+modal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget
+    const imgUrl = button.getAttribute('data-img')
+    modal.querySelector('#imgMedicamento').src = imgUrl
+})
+</script>

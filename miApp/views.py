@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import Receta, Medicamento
 import json
+import os
 
 
 
@@ -58,6 +59,11 @@ def RecetaDetalle(request, id):
         deleteId = request.POST.get('deleteID')
         medicina = Medicamento.objects.get(id = deleteId)
         
+        if medicina.img:
+            img_path = medicina.img.path  # ruta absoluta
+            if os.path.isfile(img_path):  # existe en el disco
+                os.remove(img_path) 
+        
         medicina.delete()
     
     receta = Receta.objects.get(id=id)
@@ -72,6 +78,7 @@ def AgregarMedicina(request):
         cada = request.POST.get("cada"),
         durante = request.POST.get("durante"),
         receta_id = request.POST.get("recetaId"),
+        img = request.FILES.get("img")
     )
     
     return JsonResponse({
@@ -87,6 +94,7 @@ def editarMedicina(request):
     medicina.cantidad = request.POST.get('cantidad')
     medicina.cada = request.POST.get('cada')
     medicina.durante = request.POST.get('durante')
+    medicina.img = request.FILES.get('img', medicina.img)
     medicina.save()
     
     return redirect("receta-detalle", id = recetaID)
