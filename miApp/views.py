@@ -80,15 +80,17 @@ def RecetaDetalle(request, id):
     return render(request, "recetaDetalle.html", {"receta": receta, "medicinas": medicinas})
 
 def AgregarMedicina(request):
-    Medicamento.objects.create(
-        nombre = request.POST.get("nombre"),
-        cantidad = request.POST.get("cantidad"),
-        cada = request.POST.get("cada"),
-        durante = request.POST.get("durante"),
-        receta_id = request.POST.get("recetaId"),
-        img = request.FILES.get("img",'')
+    medicamento = Medicamento(
+        nombre=request.POST.get("nombre"),
+        cantidad=request.POST.get("cantidad"),
+        cada=request.POST.get("cada"),
+        durante=request.POST.get("durante"),
+        receta_id=request.POST.get("recetaId"),
+        img=request.FILES.get("img", None)  # None en lugar de string vacío
     )
-    
+
+    medicamento.save()
+
     return JsonResponse({
         'status' : 'ok'
     })
