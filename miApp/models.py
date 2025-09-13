@@ -22,7 +22,7 @@ class Medicamento(models.Model):
     cantidad = models.CharField(max_length=50)  
     cada = models.CharField(max_length=50)     
     durante = models.CharField(max_length=50)
-    img = models.ImageField(upload_to='imagenes', null=True)  
+    img = models.ImageField(null=True)  
 
     def __str__(self):
         return f"{self.nombre} ({self.cantidad})"
