@@ -24,9 +24,6 @@ def index(request):
     
     return render(request, "home.html",{'lista': lista, 'activos': activos})
 
-def debug_view(request):
-    from django.core.files.storage import default_storage
-    return HttpResponse(f"Storage usado: {default_storage.__class__.__name__}")
 
 def eliminarReceta(request):
     deleteId = int(request.POST.get('deleteID'))

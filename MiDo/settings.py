@@ -145,20 +145,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Al final de settings.py - AGREGA ESTO:
-print("=== STORAGE DEBUG ===")
 
-# Verifica el storage actual
 from django.core.files.storage import default_storage
-print("Default Storage:", default_storage.__class__.__name__)
+from cloudinary_storage.storage import MediaCloudinaryStorage
+import django.core.files.storage
 
-# Verifica si cloudinary_storage está instalado
-try:
-    from cloudinary_storage.storage import MediaCloudinaryStorage
-    test_storage = MediaCloudinaryStorage()
-    print("✅ MediaCloudinaryStorage funciona")
-except Exception as e:
-    print("❌ MediaCloudinaryStorage error:", e)
+# Esto sobrescribe el storage por defecto
+django.core.files.storage.default_storage = MediaCloudinaryStorage()
 
-# Verifica el valor actual de DEFAULT_FILE_STORAGE
-print("DEFAULT_FILE_STORAGE setting:", DEFAULT_FILE_STORAGE)
+# Verificación final
+print("=== VERIFICACIÓN FINAL ===")
+print("Storage forzado:", django.core.files.storage.default_storage.__class__.__name__)
