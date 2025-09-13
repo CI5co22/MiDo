@@ -46,7 +46,7 @@ def eliminarReceta(request):
                 except Exception as e:
                     print(f"❌ Error eliminando de Cloudinary: {e}")
                                     
-                med.delete()
+        med.delete()
     
     return redirect("/")
     
