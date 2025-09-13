@@ -1,9 +1,24 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+<style>
+  .modal-spinner {
+  display: none; /* oculto al inicio */
+  position: fixed; /* fijo sobre toda la ventana del modal */
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(255,255,255,0.7);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content rounded-4 shadow position-relative"> <!-- position-relative es clave -->
+    <div class="modal-content rounded-4 shadow position-relative">
 
       <div class="p-3 d-flex justify-content-between align-items-center">
-        <h5 class="title fw-bold" id="exampleModalLabel">Nueva medicina</h5>
+        <h5 class="title fw-bold">Nueva medicina</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
 
@@ -11,28 +26,10 @@
         <form id="agregarMedicina" data-id="{{ receta.id }}" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="mb-3">
-            <label for="med-name" class="form-label fw-semibold">Nombre del medicamento</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej. Paracetamol" required>
+            <label class="form-label fw-semibold">Nombre del medicamento</label>
+            <input type="text" class="form-control" name="nombre" placeholder="Ej. Paracetamol" required>
           </div>
-          <div class="row g-2 mb-3">
-            <div class="col">
-              <label class="form-label fw-semibold">Tomar</label>
-              <input id="med-cantidad" name="cantidad" type="text" class="form-control" placeholder='Ej.10ml o "2"' required>
-            </div>
-            <div class="col">
-              <label class="form-label fw-semibold">Cada</label>
-              <input id="med-cada" type="text" name="cada" class="form-control" placeholder="Ej. 8 hrs" required>
-            </div>
-            <div class="col">
-              <label class="form-label fw-semibold">Durante</label>
-              <input id="med-durante" type="text" name="durante" class="form-control" placeholder="Ej. 10 días" required>
-            </div>
-          </div>
-          <input type="hidden" value="{{receta.id}}" name="recetaId">
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Foto del medicamento (opcional)</label>
-            <input type="file" name="img" class="form-control">
-          </div>
+          <!-- otros campos... -->
         </form>
       </div>
 
@@ -40,11 +37,8 @@
         <button type="submit" form="agregarMedicina" class="btn scl">Agregar</button>
       </div>
 
-      <!-- Spinner oculto al inicio -->
-      <div id="modalSpinner" style="display:none; 
-          position:absolute; top:0; left:0; width:100%; height:100%; 
-          background:rgba(255,255,255,0.7); 
-          z-index:1055; display:flex; align-items:center; justify-content:center;">
+      <!-- SPINNER overlay -->
+      <div id="modalSpinner" class="modal-spinner">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Cargando...</span>
         </div>
