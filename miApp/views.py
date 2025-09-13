@@ -36,23 +36,17 @@ def eliminarReceta(request):
     medicinas = receta.medicamentos.all()  
     
     for med in medicinas:
-        if med.img and 'cloudinary.com' in med.img:
-            try:
-                    url_parts = med.img.split('/')
-                    if 'upload' in url_parts:
-                        upload_index = url_parts.index('upload')
-                        public_id_parts = url_parts[upload_index + 2:] 
-                        public_id = '/'.join(public_id_parts).rsplit('.', 1)[0]
-                        public_id = unquote(public_id) 
-                        
-                        # Eliminar de Cloudinary
-                        destroy(public_id)
-                        print(f"✅ Imagen {public_id} eliminada de Cloudinary")
-                        
-            except Exception as e:
-                    print(f"❌ Error eliminando imagen de Cloudinary: {e}")
+        if med and med.img:
+                try:
+                    public_id = med.img.public_id
 
-        receta.delete()
+                    destroy(public_id)
+                    print(f"✅ Imagen {public_id} eliminada de Cloudinary")
+
+                except Exception as e:
+                    print(f"❌ Error eliminando de Cloudinary: {e}")
+                                    
+                med.delete()
     
     return redirect("/")
     
