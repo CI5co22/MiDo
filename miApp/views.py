@@ -48,6 +48,8 @@ def eliminarReceta(request):
                                     
         med.delete()
     
+    receta.delete()
+    
     return redirect("/")
     
 def AgregarReceta(request):
