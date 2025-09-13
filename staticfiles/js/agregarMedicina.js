@@ -1,5 +1,6 @@
 $(document).on("submit", "#agregarMedicina", function (e) {
-    e.preventDefault();  // Evita submit normal
+    e.preventDefault();
+
     let $form = $(this);
     let recetaId = $form.data("id");
 
@@ -7,7 +8,7 @@ $(document).on("submit", "#agregarMedicina", function (e) {
     formData.append("recetaId", recetaId);
     formData.append("csrfmiddlewaretoken", $form.find("input[name='csrfmiddlewaretoken']").val());
 
-    // Mostrar spinner dentro del modal
+    // Mostrar spinner
     $("#modalSpinner").show();
 
     $.ajax({
@@ -19,7 +20,7 @@ $(document).on("submit", "#agregarMedicina", function (e) {
         success: function(resp) {
             $("#modalSpinner").hide(); // Ocultar spinner
             if (resp.status === "ok") {
-                $('#exampleModal').modal('hide');
+                $('#exampleModal').modal('hide'); // Cierra modal
                 location.reload();
             } else {
                 alert("Error al agregar la medicina");
