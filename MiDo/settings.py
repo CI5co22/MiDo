@@ -152,7 +152,3 @@ import django.core.files.storage
 
 # Esto sobrescribe el storage por defecto
 django.core.files.storage.default_storage = MediaCloudinaryStorage()
-
-# Verificación final
-print("=== VERIFICACIÓN FINAL ===")
-print("Storage forzado:", django.core.files.storage.default_storage.__class__.__name__)
