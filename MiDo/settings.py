@@ -30,7 +30,12 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://mido-production.up.railway.app',
+]
 
+CSRF_COOKIE_SECURE = True  # si tu app usa HTTPS
+SESSION_COOKIE_SECURE = True
 # Application definition
 
 INSTALLED_APPS = [
