@@ -144,3 +144,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Al final de settings.py
+print("=== CLOUDINARY CONFIG ===")
+print("Cloud Name:", os.environ.get('CLOUDINARY_CLOUD_NAME'))
+print("API Key:", os.environ.get('CLOUDINARY_API_KEY'))
+print("API Secret:", os.environ.get('CLOUDINARY_API_SECRET'))
