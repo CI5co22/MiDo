@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 # from .models import Tareas
 from django.http import HttpResponse, JsonResponse
 from .models import Receta, Medicamento
+from cloudinary.uploader import upload
 import json
 import os
 
@@ -80,16 +81,21 @@ def RecetaDetalle(request, id):
     return render(request, "recetaDetalle.html", {"receta": receta, "medicinas": medicinas})
 
 def AgregarMedicina(request):
-    medicamento = Medicamento(
+    if 'img' in request.FILES:
+        result = upload(request.FILES['img'])
+        cloudinary_url = result['secure_url']
+    else:
+        cloudinary_url = ''
+    
+    # Crea el objeto con la URL de Cloudinary
+    Medicamento.objects.create(
         nombre=request.POST.get("nombre"),
         cantidad=request.POST.get("cantidad"),
         cada=request.POST.get("cada"),
         durante=request.POST.get("durante"),
         receta_id=request.POST.get("recetaId"),
-        img=request.FILES.get("img", None)  # None en lugar de string vacío
+        img=cloudinary_url  # URL directa de Cloudinary
     )
-
-    medicamento.save()
 
     return JsonResponse({
         'status' : 'ok'
