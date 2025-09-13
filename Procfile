@@ -1,1 +1,1 @@
-web: gunicorn MiDo.wsgi
+web: gunicorn MiDo.wsgi:application --bind 0.0.0.0:$PORT
