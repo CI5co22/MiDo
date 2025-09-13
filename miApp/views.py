@@ -5,6 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from .models import Receta, Medicamento
 from cloudinary.uploader import destroy
 from cloudinary.uploader import upload
+
 import json
 import os
 
@@ -81,24 +82,17 @@ def RecetaDetalle(request, id):
         deleteId = request.POST.get('deleteID')
         if deleteId:
             medicina = Medicamento.objects.filter(id=deleteId).first()
-            if medicina:
+            
+            if medicina and medicina.img:
                 try:
-                        import re
-                        from urllib.parse import unquote
-                
-                        url_parts = medicina.img.split('/')
-                    
-                        upload_index = url_parts.index('upload')
-                        public_id_parts = url_parts[upload_index + 2:]  
-                        public_id = '/'.join(public_id_parts).rsplit('.', 1)[0]  
-                        public_id = unquote(public_id)
-                        
-                        destroy(public_id)
-                        print(f"✅ Imagen {public_id} eliminada de Cloudinary")
-                        
+                    public_id = medicina.img.public_id
+
+                    destroy(public_id)
+                    print(f"✅ Imagen {public_id} eliminada de Cloudinary")
+
                 except Exception as e:
-                        print(f"❌ Error eliminando de Cloudinary: {e}")
-                        
+                    print(f"❌ Error eliminando de Cloudinary: {e}")
+                                    
                 medicina.delete()
 
     

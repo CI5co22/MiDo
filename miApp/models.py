@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Receta(models.Model):
@@ -22,7 +23,7 @@ class Medicamento(models.Model):
     cantidad = models.CharField(max_length=50)  
     cada = models.CharField(max_length=50)     
     durante = models.CharField(max_length=50)
-    img = models.ImageField(null=True)  
+    img = CloudinaryField('image', null=True, blank=True)
 
     def __str__(self):
         return f"{self.nombre} ({self.cantidad})"
