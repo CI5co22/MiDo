@@ -82,8 +82,7 @@ def RecetaDetalle(request, id):
         if deleteId:
             medicina = Medicamento.objects.filter(id=deleteId).first()
             if medicina:
-                if medicina.img and 'cloudinary.com' in medicina.img:
-                    try:
+                try:
                         import re
                         from urllib.parse import unquote
                 
@@ -97,7 +96,7 @@ def RecetaDetalle(request, id):
                         destroy(public_id)
                         print(f"✅ Imagen {public_id} eliminada de Cloudinary")
                         
-                    except Exception as e:
+                except Exception as e:
                         print(f"❌ Error eliminando de Cloudinary: {e}")
                         
                 medicina.delete()
