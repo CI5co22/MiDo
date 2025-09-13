@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 # from .models import Tareas
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Receta, Medicamento
 import json
 import os
@@ -24,6 +24,9 @@ def index(request):
     
     return render(request, "home.html",{'lista': lista, 'activos': activos})
 
+def debug_view(request):
+    from django.core.files.storage import default_storage
+    return HttpResponse(f"Storage usado: {default_storage.__class__.__name__}")
 
 def eliminarReceta(request):
     deleteId = int(request.POST.get('deleteID'))

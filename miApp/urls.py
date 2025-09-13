@@ -9,5 +9,6 @@ urlpatterns = [
     path('actualizar-efectividad/<int:id>/',views.actualizar_efectividad),
     path('eliminarReceta/',views.eliminarReceta),
     path('receta/editarMedicina/',views.editarMedicina),
-    path('receta/editarReceta/',views.editarReceta)
+    path('receta/editarReceta/',views.editarReceta),
+    path('debug/', views.debug_view),  # Nueva ruta para la vista de depuración
 ]
