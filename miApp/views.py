@@ -118,16 +118,22 @@ def AgregarMedicina(request):
         'status' : 'ok'
     })
     
-def editarMedicina(request):
+def editarMedicina(request):    
     recetaID = request.POST.get('recetaID')
     editID = int(request.POST.get('edit-id'))
     medicina = Medicamento.objects.get(id = editID)
+    
+    if 'img' in request.FILES:
+        result = upload(request.FILES['img'])
+        cloudinary_url = result['secure_url']
+    else:
+        cloudinary_url = medicina.img
     
     medicina.nombre = request.POST.get('nombre')
     medicina.cantidad = request.POST.get('cantidad')
     medicina.cada = request.POST.get('cada')
     medicina.durante = request.POST.get('durante')
-    medicina.img = request.FILES.get('img', medicina.img)
+    medicina.img = cloudinary_url
     medicina.save()
     
     return redirect("receta-detalle", id = recetaID)
