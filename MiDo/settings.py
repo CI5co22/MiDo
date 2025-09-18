@@ -16,18 +16,21 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-cloudinary.config( 
-  cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'),
-  api_key = os.environ.get('CLOUDINARY_API_KEY'),
-  api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
+cloudinary.config(
+  cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME','dzfotatcc'),
+  api_key = os.environ.get('CLOUDINARY_API_KEY','191996178881451'),
+  api_secret = os.environ.get('CLOUDINARY_API_SECRET','z1Sv0mpgPBXEklGE_sp8kSOY1kY'),
   secure = True
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -93,16 +96,25 @@ WSGI_APPLICATION = 'MiDo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
+ENV = os.getenv('DJANGO_ENV', 'local')  # Por defecto 'local'
+if ENV == 'local':
+   DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.getenv("MYSQLDATABASE", "railway"),
-        'USER': os.getenv("MYSQLUSER", "root"),
-        'PASSWORD': os.getenv("MYSQLPASSWORD", ""),
-        'HOST': os.getenv("MYSQLHOST", "localhost"),
-        'PORT': os.getenv("MYSQLPORT", "3306"),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+else:  # producción / desarrollo en Railway
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv("MYSQL_DATABASE", "railway"),
+            'USER': os.getenv("MYSQLUSER", "root"),
+            'PASSWORD': os.getenv("MYSQLPASSWORD", ""),
+            'HOST': os.getenv("MYSQLHOST", "mysql.railway.internal"),
+            'PORT': os.getenv("MYSQLPORT", "3306"),
+        }
+    }
 
 
 # Password validation
@@ -149,10 +161,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# from django.core.files.storage import default_storage
+# from cloudinary_storage.storage import MediaCloudinaryStorage
+# import django.core.files.storage
 
-from django.core.files.storage import default_storage
-from cloudinary_storage.storage import MediaCloudinaryStorage
-import django.core.files.storage
+# # Esto sobrescribe el storage por defecto
+# django.core.files.storage.default_storage = MediaCloudinaryStorage()
 
-# Esto sobrescribe el storage por defecto
-django.core.files.storage.default_storage = MediaCloudinaryStorage()
+
