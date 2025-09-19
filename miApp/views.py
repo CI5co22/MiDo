@@ -38,7 +38,7 @@ def eliminarReceta(request):
     for med in medicinas:
         if med and med.img:
                 try:
-                    public_id = med.img.public_id.split('/', 1)[-1]
+                    public_id = med.img_id
 
                     destroy(public_id)
                     print(f"✅ Imagen {public_id} eliminada de Cloudinary")
@@ -81,7 +81,7 @@ def RecetaDetalle(request, id):
             
             if medicina and medicina.img:
                 try:
-                    public_id = medicina.img.public_id.split('/', 1)[-1]
+                    public_id = medicina.img_id
 
                     destroy(public_id)
                     print(f"✅ Imagen {public_id} eliminada de Cloudinary")
@@ -101,8 +101,10 @@ def AgregarMedicina(request):
     if 'img' in request.FILES:
         result = upload(request.FILES['img'])
         cloudinary_url = result['secure_url']
+        public_id = result['public_id']
     else:
         cloudinary_url = ''
+        public_id = ''
     
     # Crea el objeto con la URL de Cloudinary
     Medicamento.objects.create(
@@ -111,7 +113,8 @@ def AgregarMedicina(request):
         cada=request.POST.get("cada"),
         durante=request.POST.get("durante"),
         receta_id=request.POST.get("recetaId"),
-        img=cloudinary_url  # URL directa de Cloudinary
+        img=cloudinary_url,  # URL directa de Cloudinary
+        img_id = public_id
     )
 
     return JsonResponse({
