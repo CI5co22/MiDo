@@ -8,11 +8,26 @@
     --text: rgb(64, 163, 160);
 }
 
+
 .scl
 {
     transition: 0.3s ease-out;
+
 }
+
+.scl2
+{
+    transition: 0.3s ease-out;  
+}
+
+.scl2:hover
+{
+    transform: scale(1.01);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    background-color: var(--text) !important;
+}
+
 .scl:hover
 {
-    transform: scale(1.05);
-}
+    transform: scale(1.01);
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;}

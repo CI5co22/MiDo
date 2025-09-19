@@ -36,7 +36,7 @@
                         Lugar no asignado
                         {% endif %}
                 </p>
-                <button class="btn scl editRecetaInfo"
+                <button class="btn scl2 editRecetaInfo"
                     data-bs-toggle="modal" 
                     data-bs-target="#editarRecetaModal"
                     
@@ -46,24 +46,24 @@
                     data-fecha="{{receta.fecha|stringformat:'s'}}"
                     >
                     <i class="fa-solid fa-edit me-2"></i> Editar información</button>
-                <div class="form-check form-switch d-flex p-0">
-                    <p class="p-0 m-0"><b>Seguir receta:</b></p>
-                    <input 
-                    class="form-check-input ms-3 switch-lg" 
-                    data-id="{{ receta.id}}" 
-                    data-token="{{ csrf_token }}" 
+               <div class="checkbox-wrapper-3 d-flex">
+                <p><b>Seguir receta:</b></p>
+                <input 
                     type="checkbox" 
-                    role="switch" 
-                    id="switchCheckDefault"
+                    id="cbx-3" 
+                    data-id="{{ receta.id}}" 
+                    data-token="{{ csrf_token }}"
                     {{ receta.activo|yesno:"checked,"   }}
-                    >
+                />
+                <label for="cbx-3" class="toggle"><span></span></label>
                 </div>
+
             </div>
             <div class="efectividad ">
                 <p class="title"><b>Efectividad</b></p>
                 <div class="efectividad-child d-flex">
                     <p class="valor me-3 mb-0" id="efectividad-valor"  data-efectid="{{ receta.id }}">{{ receta.efectividad }}/10</p>
-                    <button class="btn scl" id="efectividad-btn">
+                    <button class="btn scl2" id="efectividad-btn">
                         <i class="fa-solid fa-edit"></i>
                     </button>
                 </div>    
@@ -73,7 +73,7 @@
         <div class="info">
             <div class="info-top mb-3">
                 <h5 class="mt-1">Medicamentos ({{receta.cantidad_medicinas}})</h5>
-                <button class="scl aggbtn " data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa-solid fa-plus me-1 "  ></i><span class="agg"> Agregar medicamento</span></button>
+                <button class="scl2 aggbtn " data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa-solid fa-plus me-1 "  ></i><span class="agg"> Agregar medicamento</span></button>
             </div>
             <div class="info-contenido ">
                 {% if medicinas %}
