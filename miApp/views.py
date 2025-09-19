@@ -38,7 +38,7 @@ def eliminarReceta(request):
     for med in medicinas:
         if med and med.img:
                 try:
-                    public_id = med.img.public_id
+                    public_id = med.img.public_id.split('/', 1)[-1]
 
                     destroy(public_id)
                     print(f"✅ Imagen {public_id} eliminada de Cloudinary")
@@ -81,7 +81,7 @@ def RecetaDetalle(request, id):
             
             if medicina and medicina.img:
                 try:
-                    public_id = medicina.img.name.rsplit('/', 1)[-1].split('.')[0]
+                    public_id = medicina.img.public_id.split('/', 1)[-1]
 
                     destroy(public_id)
                     print(f"✅ Imagen {public_id} eliminada de Cloudinary")
