@@ -114,6 +114,14 @@
 
 .informacion .fecha {
     font-size: 16px;
+    font-weight: 600;
+        color: var(--opaco)
+}
+
+.informacion .lugar
+{
+    font-weight: 600;
+        color: var(--opaco)
 }
 
 .switch-lg {
@@ -157,11 +165,12 @@
 }
 
 .info {
+    background-color: var(--card);
     margin-top: 1rem;
     padding: 1.5rem;
-    border: 1px solid var(--borde);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     border-radius: 20px;
-    min-height: 400px;
+    min-height: 500px;
     transition: .3s ease-in-out;
 }
 
@@ -209,7 +218,7 @@
     margin-bottom: 0.8rem;
     padding: 1rem;
     border: 1px solid var(--borde);
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -218,6 +227,7 @@
 .mediciona-info .medicina-title {
     text-transform: uppercase;
     font-size: 18px;
+    font-weight: 700;
     margin-bottom: 5px;
 }
 
@@ -226,6 +236,8 @@
     flex-direction: column;
     gap: 0.3rem;
     margin-bottom: 1rem;
+    color: var(--opaco);
+    font-weight: 600;
 }
 
 .mediciona-info .periodos p {
@@ -242,7 +254,7 @@
 
 .mediciona-acciones button {
     font-size: 18px;
-    background-color: white;
+   
 }
 
 .mediciona-acciones .edit:hover {
@@ -321,6 +333,7 @@
     
     .informacion .fecha {
         font-size: 18px;
+        
     }
     
     .efectividad {
@@ -354,7 +367,7 @@
     .info {
         padding: 2rem;
         border-radius: 30px;
-        min-height: 550px;
+        min-height: 500px;
     }
     
     .info .info-top {
@@ -379,7 +392,7 @@
 
     .medicina {
         padding: 1rem 1.4rem 0.3rem;
-        border-radius: 30px;
+        border-radius: 20px;
         flex-direction: row;
         align-items: center;
     }
@@ -391,7 +404,7 @@
     .mediciona-info .periodos {
         flex-direction: row;
         gap: 0;
-        margin-bottom: 0;
+        margin-bottom: 1rem;
     }
     
     .mediciona-info .periodos p {
@@ -431,6 +444,11 @@
     
     .back {
         left: -60px;
+    }
+     .info {
+        padding: 2rem;
+        border-radius: 30px;
+        min-height: 440px;
     }
 }
 

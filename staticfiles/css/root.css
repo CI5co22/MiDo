@@ -1,6 +1,6 @@
 :root
 {
-    --botones: #A0D3E8;
+    --botones: #56C4C1;
     --card: #F5F7FA;
     --borde: #C0C0C0;
     --opaco: #00000076;
@@ -8,6 +8,11 @@
     --text: rgb(64, 163, 160);
 }
 
+body
+{
+    background-color: #F2F2F2;
+    font-family: 'Lato', sans-serif;
+}
 
 .scl
 {
