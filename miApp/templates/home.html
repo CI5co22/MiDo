@@ -33,7 +33,7 @@
             </button>
             
         </div>
-        <div class="list">
+        <div class="list" id="list">
             <div class="contenedor">
                 <p class="clasif"><b>Recetas actuales:</b></p>
                 <div class="view">
@@ -45,6 +45,7 @@
                     </span>
                 </div>
             </div>
+            <div class="recetas">
             {% if activos %}
             {% for receta in activos %}
            <div class="receta mt-3" data-id="{{ receta.id }}">
@@ -58,12 +59,14 @@
                     </div>
                     <div class="receta-cantidadMedicina">
                         <i class="fa-solid fa-capsules"></i>
-                        {{receta.cantidad_medicinas}} medicinas
+                        <span class="span-med">{{receta.cantidad_medicinas}} medicinas</span>
                         <i class="fa-solid fa-location-dot ms-3"></i>
+                        <span class="span-lugar">
                         {%  if  receta.lugar|default_if_none:"" %}
                         {{ receta.lugar|title }}
                         {% else %}
                         Lugar no asignado
+                        </span>
                         {% endif %}
                     </div>
                     
@@ -89,12 +92,13 @@
             {% else %}
                 <p>No hay recetas activas</p>
             {% endif %}
+            </div>
             <!--  -->
             <hr class="mt-4 mb-3">
             <!--  -->
             {% if lista %}
             <p class="clasif"><b>Recetas guardadas:</b></p>
-            
+            <div class="recetas">
             {% for receta in lista %}
             <div class="receta mt-3" data-id="{{ receta.id }}">
                 <div class="receta-info1">
@@ -107,19 +111,21 @@
                     </div>
                     <div class="receta-cantidadMedicina">
                         <i class="fa-solid fa-capsules"></i>
-                        {{receta.cantidad_medicinas}} medicinas
+                        <span class="span-med">{{receta.cantidad_medicinas}} medicinas</span>
                         <i class="fa-solid fa-location-dot ms-3"></i>
+                        <span class="span-lugar">
                         {%  if  receta.lugar|default_if_none:"" %}
                         {{ receta.lugar|title }}
                         {% else %}
                         Lugar no asignado
+                        </span>
                         {% endif %}
                     </div>
                     
                 </div>
                 <div class="receta-info2">
                     <div class="detalles">
-                        <p class="fecha m-0 mt-0">{{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
+                        <p class="fecha m-0 mt-3">{{  receta.fecha|date:"j \\d\\e F \\d\\e Y"  }}</p>
                         <p class="efectividad"><b>Efectividad:</b> {{ receta.efectividad }}/10</p>
                     </div>
                     <div class="accion">
@@ -130,7 +136,7 @@
                         method="POST">
                             {% csrf_token %} 
                             <input type="hidden" name="deleteID" value="{{ receta.id }}">
-                        </form>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -143,6 +149,7 @@
                 {% include 'sinRecetas.html' %}
               {% endif %}
             {% endif %}
+            </div>
         </div>
     </div>
 

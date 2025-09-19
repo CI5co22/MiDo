@@ -51,6 +51,7 @@
 }
 
 .receta {
+    
     background-color: var(--card);
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     border-radius: 1.5rem;
@@ -58,6 +59,46 @@
     margin-bottom: 1rem;
     transition: .3s ease-in-out;
     position: relative;
+}
+
+.receta-grid { 
+    width: 240px;
+    border-radius: 2rem !important;
+    padding: 1.3rem 2rem 1rem 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 0rem !important;
+}
+
+.receta-grid .receta-doc
+{
+    margin-bottom: 0px;
+    color: grey;
+    font-size: 15px;
+}
+
+
+.receta-grid .receta-cantidadMedicina {
+    margin-bottom: 0 !important;
+}
+    
+.receta-grid .receta-cantidadMedicina i {
+    display: none;
+    margin-bottom: 0 !important;
+}
+
+.receta-grid .receta-cantidadMedicina .span-med {
+    display: none;
+}
+
+.receta-grid .receta-cantidadMedicina .span-lugar {
+    color: black;
+    font-size: 20px;
+    font-weight: 900 !important;
+}
+
+.receta-grid .receta-info2 .detalles {
+    display: none;
 }
 
 .receta:hover {
@@ -193,8 +234,8 @@
         margin: 0.3rem 0;
     }
     
-    .receta {
-        padding: 1.5rem;
+    .receta-grid {
+        padding: 1rem;
     }
     
     .receta .receta-info2 {
@@ -241,6 +282,14 @@
         display: flex;
         align-items: center;
         margin-bottom: 1.5rem;
+    }
+
+    .receta-grid {
+        border-radius: 2rem;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0rem;
     }
     
     .receta-doc {
@@ -324,15 +373,10 @@
         align-items: center;
         margin-bottom: 1.5rem;
     }
+
+    /* mi pantalla */
     
-    .receta-doc {
-        font-size: 20px;
-        margin-bottom: 0.25rem;
-    }
     
-    .receta .receta-cantidadMedicina {
-        margin-bottom: 0;
-    }
     
     .receta .receta-info2 {
         position: absolute;
