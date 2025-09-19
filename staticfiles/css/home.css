@@ -2,9 +2,11 @@
 .container {
     width: 100% !important;
     padding: 0 1rem;
+    margin-bottom: 10rem !important;
 }
 
 .top {
+
     display: flex;
     flex-direction: column;
     margin-bottom: 2em;
@@ -55,6 +57,7 @@
     width: 90vw !important;
     display: flex; /* siempre flex */
     flex-direction: column;
+    
 }
 
 .recetas-grid
