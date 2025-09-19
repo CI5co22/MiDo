@@ -10,9 +10,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-            migrations.RemoveField(
-                model_name='medicamento',
-                name='img_id',
-            ),
-        ]
-
+        migrations.AddField(
+            model_name='medicamento',
+            name='img_id',
+            field=models.CharField(default='', max_length=300),
+        ),
+    ]

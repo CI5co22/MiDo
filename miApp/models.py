@@ -24,7 +24,6 @@ class Medicamento(models.Model):
     cada = models.CharField(max_length=50)     
     durante = models.CharField(max_length=50)
     img = CloudinaryField('image', blank=True, default='')
-    img_id = models.CharField(max_length=300, default='')
 
     def __str__(self):
         return f"{self.nombre} ({self.cantidad})"
