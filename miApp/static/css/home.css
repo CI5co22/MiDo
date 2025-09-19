@@ -137,6 +137,36 @@
     color: var(--opaco);
 }
 
+.contenedor
+{
+    display: flex;
+    position: relative;
+}
+
+.contenedor .view
+{
+    position: absolute;
+    right: 0;
+    padding: 5px 8px 0;
+    border-radius: 8px;
+}
+
+
+/* icono */
+.material-symbols-outlined {
+ cursor: pointer;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.no-select
+{
+    color: grey;
+}
+
 /* Tablet (768px a 899px) */
 @media (min-width: 768px) and (max-width: 899px) {
     .container {
