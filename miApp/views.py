@@ -6,6 +6,8 @@ from .models import Receta, Medicamento
 from cloudinary.uploader import destroy
 from cloudinary.uploader import upload
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -24,6 +26,7 @@ def index(request):
             fecha = request.POST.get('fecha'),
             lugar = request.POST.get('lugar')
         )
+        messages.success(request, 'Receta agregada correctamente!')
         
     activos =  Receta.objects.filter(activo=True)   
     
@@ -44,14 +47,14 @@ def eliminarReceta(request):
                     public_id = med.img_id
 
                     destroy(public_id)
-                    print(f"✅ Imagen {public_id} eliminada de Cloudinary")
-
+            
                 except Exception as e:
                     print(f"❌ Error eliminando de Cloudinary: {e}")
                                     
         med.delete()
     
     receta.delete()
+    messages.success(request, 'Receta eliminada correctamente!')
     
     return redirect("/")
     
@@ -87,12 +90,12 @@ def RecetaDetalle(request, id):
                     public_id = medicina.img_id
 
                     destroy(public_id)
-                    print(f"✅ Imagen {public_id} eliminada de Cloudinary")
 
                 except Exception as e:
                     print(f"❌ Error eliminando de Cloudinary: {e}")
                                     
-                medicina.delete()
+        medicina.delete()
+        messages.success(request, '¡Medicina eliminada correctamente!')
 
     
     receta = Receta.objects.get(id=id)
@@ -171,6 +174,8 @@ def AgregarMedicina(request):
             img=cloudinary_url,
             img_id=public_id
         )
+        
+        messages.success(request, '¡Medicina agregada correctamente!')
 
         return JsonResponse({'status': 'ok'})
 
@@ -233,6 +238,7 @@ def editarMedicina(request):
         medicina.img = cloudinary_url
         medicina.img_id = public_id
         medicina.save()
+        messages.success(request, '¡Medicina actualizada!')
         
         return redirect("receta-detalle", id=recetaID)
         
@@ -248,6 +254,7 @@ def editarReceta(request):
     receta.lugar = request.POST.get('lugar')
     receta.fecha = request.POST.get('fecha')
     receta.save()
+    messages.success(request, 'Receta actualizada!')
     
     return redirect("receta-detalle", id = recetaID)
 
