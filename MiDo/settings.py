@@ -161,6 +161,27 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 15 * 1024 * 1024   # 15MB
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 1000
+
+# Timeout para Gunicorn
+GUNICORN_TIMEOUT = 60
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+}
+
 # from django.core.files.storage import default_storage
 # from cloudinary_storage.storage import MediaCloudinaryStorage
 # import django.core.files.storage
