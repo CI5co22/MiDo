@@ -118,8 +118,13 @@
                 </div>
             </div>
             {% endfor %}
+
+
             {% else%}
-             {%  include 'sinRecetas.html' %}
+            
+              {% if not activos and not lista %}
+                {% include 'sinRecetas.html' %}
+              {% endif %}
             {% endif %}
         </div>
     </div>

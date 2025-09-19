@@ -25,8 +25,7 @@ def index(request):
             lugar = request.POST.get('lugar')
         )
         
-    activos =  Receta.objects.filter(activo=True)
-   
+    activos =  Receta.objects.filter(activo=True)   
     
     lista = Receta.objects.filter(activo=False).order_by('-id')
     
