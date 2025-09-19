@@ -25,7 +25,10 @@
    
     <div class="container container-fluid w-50 mt-5">
         <div class="top">
+            <div class="texto">
             <h1>MiDo</h1>
+            <h5>Tu espacio para gestionar recetas médicas</h5>
+            </div>
             <button data-bs-toggle="modal" data-bs-target="#exampleModal" id="agregar" class="scl2 ">
                 <i class="fa-solid fa-plus"></i>
                 Nueva receta
@@ -34,7 +37,7 @@
         </div>
         <div class="list">
             <div>
-                <p><b>En curso:</b></p>
+                <p class="clasif"><b>Recetas actuales:</b></p>
             </div>
             {% if activos %}
             {% for receta in activos %}
@@ -85,6 +88,7 @@
             <!--  -->
             {% if lista %}
             {% for receta in lista %}
+            <p class="clasif"><b>Recetas guardadas:</b></p>
             <div class="receta mt-3" data-id="{{ receta.id }}">
                 <div class="receta-info1">
                     <div class="receta-doc">
