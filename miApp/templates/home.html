@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/modalAgregar.css' %}">
     <link rel="stylesheet" href="{% static 'css/toast.css' %}">
+    <link rel="stylesheet" href="{% static 'css/eliminarReceta.css' %}">
 
 
 
@@ -79,14 +80,17 @@
                         <p class="efectividad"><b>Efectividad:</b> {{ receta.efectividad }}/10</p>
                     </div>
                     <div class="accion">
-                        <button class="btn eliminar scl" onclick="event.stopPropagation(); document.getElementById('eliminarReceta-{{ receta.id }}').submit()"><i class="fa-solid fa-trash"></i></button>
+                        <button class="btn eliminar scl">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
                         <form 
-                        id="eliminarReceta-{{ receta.id }}"
-                        action="eliminarReceta/" 
-                        method="POST">
+                            id="eliminarReceta-{{ receta.id }}"
+                            action="eliminarReceta/" 
+                            method="POST">
                             {% csrf_token %} 
                             <input type="hidden" name="deleteID" value="{{ receta.id }}">
-                    </form>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -131,14 +135,17 @@
                         <p class="efectividad"><b>Efectividad:</b> {{ receta.efectividad }}/10</p>
                     </div>
                     <div class="accion">
-                        <button class="btn eliminar scl" onclick="event.stopPropagation(); document.getElementById('eliminarReceta-{{ receta.id }}').submit()"><i class="fa-solid fa-trash"></i></button>
+                        <button class="btn eliminar scl">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
                         <form 
-                        id="eliminarReceta-{{ receta.id }}"
-                        action="eliminarReceta/" 
-                        method="POST">
+                            id="eliminarReceta-{{ receta.id }}"
+                            action="eliminarReceta/" 
+                            method="POST">
                             {% csrf_token %} 
                             <input type="hidden" name="deleteID" value="{{ receta.id }}">
-                    </form>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -158,6 +165,7 @@
 <!-- modales -->
 {% include 'modales/agregarReceta.html' %}
 {% include 'toast.html' %}
+{% include 'modales/eliminarReceta.html' %}
 
 
 
@@ -165,6 +173,7 @@
 <script src="{% static 'js/recetaRedirigir.js' %}"></script>
 <script src="{% static 'js/viewModule.js' %}"></script>
 <script src="{% static 'js/toast.js' %}">  </script>
+<script src="{% static 'js/eliminarReceta.js' %}">  </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
