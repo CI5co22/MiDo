@@ -9,7 +9,7 @@ class Receta(models.Model):
     fecha = models.DateField()
     efectividad = models.IntegerField(default=0) 
     activo = models.BooleanField(default=False)
-    lugar = models.CharField(max_length=100, null=True)
+    lugar = models.CharField(max_length=100, null=True , blank=True)
     
     def __str__(self):
         return f"Receta {self.id} - {self.doc}"
