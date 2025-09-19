@@ -36,7 +36,6 @@ function Pilas()
     });
     contenedor.forEach(element => {
         element.style.display = ""
-        element.style.flexWrap = "nowrap"
         element.classList.remove("recetas-grid")
     });
     
@@ -52,8 +51,6 @@ function Grid()
         element.style.marginRight = "10px"
     });
        contenedor.forEach(e => {
-        e.style.display = "flex"
-        e.style.flexWrap = "wrap"
         e.classList.add("recetas-grid")
     });
     localStorage.setItem("view",'grid')
